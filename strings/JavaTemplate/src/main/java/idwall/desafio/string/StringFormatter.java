@@ -18,4 +18,8 @@ public abstract class StringFormatter {
      * @return
      */
     public abstract String format(String text);
+
+    public Integer getLimit() {
+        return limit;
+    }
 }

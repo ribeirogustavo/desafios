@@ -47,5 +47,10 @@ public class Main {
         // Print output text
         System.out.println("Output: ");
         System.out.println(outputText);
+
+        System.out.println();
+        IdwallFormatter stringFormatter = new IdwallFormatter();
+        System.out.println("+++++++++++++++ OPS ++++++++++++++++++++");
+        System.out.println(stringFormatter.fullJustify(DEFAULT_INPUT_TEXT.replace("\n", "")));
     }
 }
