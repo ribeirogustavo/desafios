@@ -45,12 +45,13 @@ public class Main {
         String outputText = sf.format(text);
 
         // Print output text
-        System.out.println("Output: ");
+        System.out.println("Outputs: ");
+        System.out.println("Not Justified Text: ");
         System.out.println(outputText);
 
         System.out.println();
         IdwallFormatter stringFormatter = new IdwallFormatter();
-        System.out.println("+++++++++++++++ OPS ++++++++++++++++++++");
-        System.out.println(stringFormatter.fullJustify(DEFAULT_INPUT_TEXT.replace("\n", "")));
+        System.out.println("Justified Text: ");
+        System.out.println(stringFormatter.formatJustify(DEFAULT_INPUT_TEXT));
     }
 }
