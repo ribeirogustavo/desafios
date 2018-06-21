@@ -55,15 +55,4 @@ public class IdwallFormatterTest {
 
         assertEquals(DEFAULT_OUTPUT_TEXT, output);
     }
-
-    @org.junit.Test
-    public void padding() {
-        String text = "123 456";
-        String padding = "   ";
-        Integer index = 3;
-        String expectedResult = "123    456";
-        IdwallFormatter idwallFormatter = new IdwallFormatter();
-        String result = idwallFormatter.padding(index,text,padding);
-        assertEquals(expectedResult,result);
-    }
 }

@@ -50,6 +50,11 @@ public class IdwallFormatter extends StringFormatter {
         return textFormated;
     }
 
+    /**
+     *
+     * @param text
+     * @return
+     */
     public String formatJustify(String text) {
 
         String textFormatted = "";
@@ -64,9 +69,9 @@ public class IdwallFormatter extends StringFormatter {
                     text.substring(limit, limit + 1).equals("\n") ||
                     text.substring(0, 1).equals("\n")) {
                     if (text.substring(0, 1).equals("\n")){
-                        String stringAuxiliarBegining = text.substring(0, limit);
-                        stringAuxiliarBegining.replace("\n","");
-                        textFormatted += padding(stringAuxiliarBegining.lastIndexOf(" "), stringAuxiliarBegining, " ") + "\n";
+                        String stringBeginning = text.substring(0, limit);
+                        stringBeginning.replace("\n","");
+                        textFormatted += padding(stringBeginning.lastIndexOf(" "), stringBeginning, " ") + "\n";
                         text = text.substring(limit, text.length());
                     }else {
                         textFormatted += text.substring(0, limit) + "\n";
@@ -101,7 +106,7 @@ public class IdwallFormatter extends StringFormatter {
                             spaceInteraction++;
                         }
 
-                        final String[] textFormatedAuxiliar = {stringPrepared};
+                        final String[] textFormattedAux = {stringPrepared};
                         String finalPaddingWithSpace = paddingWithSpace;
                         final Integer[] iterations = {1};
                         iterations[0] = 1;
@@ -113,7 +118,7 @@ public class IdwallFormatter extends StringFormatter {
                                 long spaces = iterations[0] * finalSpaceInteraction;
                                 if (spaces < quantityToPadding) {
                                     iterations[0]++;
-                                    textFormatedAuxiliar[0] = padding(i, textFormatedAuxiliar[0], finalPaddingWithSpace);
+                                    textFormattedAux[0] = padding(i, textFormattedAux[0], finalPaddingWithSpace);
                                 }
                             }
                         });
@@ -122,7 +127,7 @@ public class IdwallFormatter extends StringFormatter {
                         for (long i = spaceAdded; i < quantityToPadding; i++) {
                             paddingWithSpace += " ";
                         }
-                        textFormatted += padding(listOfSpaces.get(listOfSpaces.size() -1), textFormatedAuxiliar[0], paddingWithSpace);
+                        textFormatted += padding(listOfSpaces.get(listOfSpaces.size() -1), textFormattedAux[0], paddingWithSpace);
                         textFormatted += "\n";
                         text = text.substring(lastIndexOfEmpty, text.length());
                     }else {
@@ -138,6 +143,11 @@ public class IdwallFormatter extends StringFormatter {
         return textFormatted;
     }
 
+    /**
+     *  This method will return a list that contain index of spaces inside of a String
+     * @param text : The text that will be extracted the indexes
+     * @return Wiil return a List that contains the spaces' index inside of a String
+     */
     private List<Integer> listOfSpace(String text) {
         List<Integer> list = new ArrayList<>();
         while (text.lastIndexOf(" ") != -1) {
@@ -150,7 +160,14 @@ public class IdwallFormatter extends StringFormatter {
         return list;
     }
 
-    protected String padding(Integer index, String text, String padding) {
+    /**
+     *  This method will insert the padding in a String according with index.
+     * @param index : The index of String to be filled
+     * @param text : The text that will receive the padding
+     * @param padding : String padded with spaces
+     * @return Will return the String with relative padding
+     */
+    private String padding(Integer index, String text, String padding) {
         text = text.substring(0, index) + padding + text.substring(index, text.length());
         return text;
     }
